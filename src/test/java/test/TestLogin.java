@@ -37,4 +37,11 @@ public class TestLogin extends WebDriverManager {
         Assert.assertEquals("", "");
     }
 
+    @Test(priority = 1) //TC05 Input wrong type of email
+    public void testIncorrectEmail(){
+        driver.get("https://marketplace.appdirect.com/signup?1773402678");
+        LoginPage email = new LoginPage(driver).inputWrongEmail();
+        Assert.assertEquals(email, "Please enter an email address");
+    }
+
 }

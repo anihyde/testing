@@ -26,4 +26,10 @@ public class LoginPage  {
         driver.findElement(By.id("idb")).click();
         return this;
     }
+
+    public LoginPage inputWrongEmail(){
+        driver.findElement(By.cssSelector("input[type='email'][value='email@address.com']")).sendKeys("mail");
+        driver.findElement(By.id("idb")).click();
+        return this;
+    }
 }
