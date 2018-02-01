@@ -2,6 +2,7 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class MyAccountPage  {
     WebDriver driver;
     // Declaring the xpath for the heading in By class

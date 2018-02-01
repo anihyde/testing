@@ -11,7 +11,7 @@ public class WebDriverManager {
         @BeforeTest
         public void setUp() throws Exception {
             // setting the driver executable for chrome browser
-            System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+            //System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
             driver = new ChromeDriver();                // created a new instance for chrome driver
             driver.manage().window().maximize();
         }
