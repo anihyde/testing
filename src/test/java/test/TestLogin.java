@@ -1,6 +1,4 @@
 package test;
-
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.HomePage;
@@ -10,38 +8,46 @@ import utilities.WebDriverManager;
 public class TestLogin extends WebDriverManager {
 
     @Test(priority=1) //TC01 Succesfully enter AppDirect's webpage
-    public void test(){
-        driver.get("http://www.appdirect.com");
-        Assert.assertEquals("AppDirect",  driver.getTitle());
-         new HomePage(driver).clickLoginButton();
+    public void testHomePage(){
+       driver.get("http://www.appdirect.com");
+        Assert.assertEquals(driver.getTitle(), "The end-to-end commerce platform for selling digital… - AppDirect");
     }
 
-    @Test(priority = 2) //TC02 Proceed to Log In page
-    public void testSignUp(){
+    @Test(priority = 2) //TC02 Access Log In Page
+    public void testLogInPage() {
+        testHomePage();
+        new HomePage(driver).clickLoginButton();
+
+    }
+
+    @Test(priority = 3) //TC03 Proceed to Sign Up page
+    public void testSignUpPage() {
+        testLogInPage();
         driver.get("https://marketplace.appdirect.com/login?543796855");
         new LoginPage(driver).findLogIn();
+        Assert.assertEquals(driver.getTitle(), "Sign Up for AppDirect");
 
     }
 
-    @Test(priority = 1) //TC03 Proceed to Sign Up page
-    public void testPage(){
-        driver.get("https://marketplace.appdirect.com/signup?1773402678");
+    @Test(priority = 4) //TC04 Test email box functionality
+    public void testEmailBox() throws InterruptedException {
+        testSignUpPage();
         new LoginPage(driver).findEmailBox();
-        Assert.assertEquals("email@address.com", driver.findElement(By.linkText("email@address.com")));
+        Thread.sleep(10);
     }
 
-    @Test(priority = 0) //TC04 Functionality of email box
-    public void testEmail(){
+    @Test(priority = 5) //TC05 Input existing email on box
+    public void testExistingEmailInput() throws InterruptedException {
         driver.get("https://marketplace.appdirect.com/signup?1773402678");
         new LoginPage(driver).inputEmail();
-        Assert.assertEquals("", "");
+        Thread.sleep(10);
     }
 
-    @Test(priority = 1) //TC05 Input wrong type of email
-    public void testIncorrectEmail(){
+    @Test(priority = 6) //TC06 Input wrong type of email
+    public void testIncorrectEmail() throws InterruptedException {
         driver.get("https://marketplace.appdirect.com/signup?1773402678");
         LoginPage email = new LoginPage(driver).inputWrongEmail();
-        Assert.assertEquals(email, "Please enter an email address");
+        Thread.sleep(10);
     }
 
 }

@@ -17,19 +17,19 @@ public class LoginPage  {
     }
 
     public LoginPage findEmailBox(){
-        driver.findElement(By.cssSelector("input[type='email'][value='email@address.com']")).click();
+        driver.findElement(By.name("emailAddress")).click();
         return this;
     }
 
     public LoginPage inputEmail(){
-        driver.findElement(By.cssSelector("input[type='email'][value='email@address.com']")).sendKeys("mail@prueba.com");
-        driver.findElement(By.id("idb")).click();
+        driver.findElement(By.name("emailAddress")).sendKeys("mail@prueba.com");
+        driver.findElement(By.name("userSignupButton")).click();
         return this;
     }
 
     public LoginPage inputWrongEmail(){
-        driver.findElement(By.cssSelector("input[type='email'][value='email@address.com']")).sendKeys("mail");
-        driver.findElement(By.id("idb")).click();
+        driver.findElement(By.name("emailAddress")).sendKeys("mail");
+        driver.findElement(By.name("userSignupButton")).click();
         return this;
     }
 }
