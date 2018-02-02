@@ -3,6 +3,9 @@ package pageobjects;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Random;
+
 public class LoginPage  {
 
     WebDriver driver;
@@ -10,9 +13,21 @@ public class LoginPage  {
     public  LoginPage(WebDriver driver) {
         this.driver = driver;
     }
-    public LoginPage findLogIn()   {
-        driver.findElement(By.linkText("Sign Up")).click();
 
+    protected String randomString() { //Generate random emails for testing
+        String randomString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder builder = new StringBuilder();
+        Random rnd = new Random();
+        while (builder.length() < 10) {
+            int index = (int) (rnd.nextFloat() * randomString.length());
+                builder.append(randomString.charAt(index));
+        }
+        String saltStr = builder.toString();
+        return saltStr;
+
+    }
+    public LoginPage findSignUp()   {
+        driver.findElement(By.linkText("Sign Up")).click();
         return this;
     }
 
@@ -21,15 +36,29 @@ public class LoginPage  {
         return this;
     }
 
+    public LoginPage signUpButton(){
+        driver.findElement(By.name("userSignupButton")).click();
+        return this;
+    }
+
     public LoginPage inputEmail(){
         driver.findElement(By.name("emailAddress")).sendKeys("mail@prueba.com");
-        driver.findElement(By.name("userSignupButton")).click();
+        signUpButton();
         return this;
     }
 
     public LoginPage inputWrongEmail(){
         driver.findElement(By.name("emailAddress")).sendKeys("mail");
-        driver.findElement(By.name("userSignupButton")).click();
+        signUpButton();
         return this;
     }
+
+    public LoginPage correctEmail(){
+        driver.findElement(By.name("emailAddress")).sendKeys(randomString() + "@address.com");
+        signUpButton();
+        driver.getCurrentUrl();
+        return this;
+    }
+
+
 }

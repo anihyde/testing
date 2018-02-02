@@ -11,9 +11,10 @@ public class WebDriverManager {
 
         public WebDriver driver = null;
         @BeforeTest
-        public void setUp() throws Exception {
-            // setting the driver executable for chrome browser
+        public void setUp() {
+            // Setting the driver executable for chrome browser
             System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+            System.getenv("ChromeDriver");
             driver = new ChromeDriver();                // created a new instance for chrome driver
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
