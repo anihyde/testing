@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage   {
     WebDriver driver;
     By loginButton = By.id("login");
+
     public  HomePage(WebDriver driver)  {
         this.driver = driver;
     }

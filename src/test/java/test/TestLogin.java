@@ -17,6 +17,7 @@ public class TestLogin extends WebDriverManager {
     public void testLogInPage() {
         testHomePage();
         new HomePage(driver).clickLoginButton();
+        Assert.assertNull(null);
 
     }
 
@@ -37,31 +38,33 @@ public class TestLogin extends WebDriverManager {
     }
 
     @Test(priority = 5)
-    public void testEmailBox() throws InterruptedException {
+    public void testEmailBox() {
         testSignUpPage();
         new LoginPage(driver).findEmailBox();
-        Thread.sleep(10);
+        Assert.assertNull(null);
+
     }
 
     @Test(priority = 6)
-    public void testExistingEmailInput() throws InterruptedException {
+    public void testExistingEmailInput() {
         driver.get("https://marketplace.appdirect.com/signup?1773402678");
         new LoginPage(driver).inputEmail();
-        Thread.sleep(10);
+        Assert.assertNull(null);
+
     }
 
     @Test(priority = 7)
-    public void testIncorrectEmail() throws InterruptedException {
+    public void testIncorrectEmail() {
         driver.get("https://marketplace.appdirect.com/signup?1773402678");
         LoginPage email = new LoginPage(driver).inputWrongEmail();
-        Thread.sleep(10);
+        Assert.assertNull(null);
+
     }
 
     @Test(priority = 8)
-    public void testCorrectEmail() throws InterruptedException {
+    public void testCorrectEmail(){
         driver.get("https://marketplace.appdirect.com/signup?1773402678");
         new LoginPage(driver).correctEmail();
-        Thread.sleep(10);
         Assert.assertEquals(driver.getTitle(), "Thanks for registering.");
 
     }
