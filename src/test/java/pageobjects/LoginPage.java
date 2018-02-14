@@ -32,7 +32,7 @@ public class LoginPage {
     }
 
     public LoginPage findSignUp() {
-
+        driver.get("https://marketplace.appdirect.com/login?543796855");
         WebElement myDynamicElement = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.linkText("Sign Up")));
         myDynamicElement.click();
@@ -49,6 +49,7 @@ public class LoginPage {
     }
 
     public LoginPage signUpButton() {
+        driver.get("https://marketplace.appdirect.com/signup?1773402678");
         WebElement signUp = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.name("userSignupButton")));
         signUp.click();
@@ -57,6 +58,7 @@ public class LoginPage {
     }
 
     public LoginPage inputEmail() {
+        driver.get("https://marketplace.appdirect.com/signup?1773402678");
         WebElement inputEmail = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.name("emailAddress")));
         inputEmail.sendKeys("mail@prueba.com");
@@ -66,6 +68,7 @@ public class LoginPage {
     }
 
     public LoginPage inputWrongEmail() {
+        driver.get("https://marketplace.appdirect.com/signup?1773402678");
         WebElement inputWrong = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.name("emailAddress")));
         inputWrong.sendKeys("mail");
@@ -75,6 +78,7 @@ public class LoginPage {
     }
 
     public LoginPage correctEmail() {
+        driver.get("https://marketplace.appdirect.com/signup?1773402678");
         WebElement correct = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.name("emailAddress")));
         correct.sendKeys(randomString() + "@address.com");
